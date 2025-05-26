@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>People - SIRIUS Lab</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="images/lab_logo.png" />
+    <link rel="icon" type="image/svg+xml" href="vite.svg" />
     <link rel="stylesheet" href="styles.css" />
     <style>
       body {
@@ -13,33 +13,33 @@
         color: #222;
         margin: 0;
         padding: 0;
-        font-size: 22px;
+        font-size: 11px;
       }
       .container {
-        max-width: 1080px;
+        max-width: 540px;
         margin: 0 auto;
-        padding: 64px 96px 128px 96px;
+        padding: 32px 48px 64px 48px;
       }
       h1 {
         color: #4b6e2f;
-        font-size: 2.3em;
+        font-size: 1.15em;
         font-weight: 700;
-        margin-bottom: 0.4em;
+        margin-bottom: 0.2em;
       }
       .people-list {
         display: grid;
-        grid-template-columns: 240px 1fr 240px 1fr 240px 1fr 240px 1fr;
-        gap: 4em 2.4em;
-        margin-top: 4em;
+        grid-template-columns: 120px 1fr 120px 1fr 120px 1fr 120px 1fr;
+        gap: 2em 1.2em;
+        margin-top: 2em;
       }
       @media (max-width: 900px) {
         .people-list {
-          grid-template-columns: 240px 1fr 240px 1fr;
+          grid-template-columns: 120px 1fr 120px 1fr;
         }
       }
       @media (max-width: 600px) {
         .people-list {
-          grid-template-columns: 240px 1fr;
+          grid-template-columns: 120px 1fr;
         }
       }
       .person {
@@ -50,47 +50,47 @@
         display: contents;
         margin-bottom: 2em;
       }
-      .person-photo {
-        width: 240px;
-        height: 240px;
-        border-radius: 16px;
-        object-fit: cover;
-        border: 2px solid #eee;
-        background: #fafafa;
-      }
-      .person.pi .person-photo {
-        height: 360px;
-      }
       .person-info {
-        margin-left: 2.4em;
+        margin-left: 1.2em;
         text-align: left;
         display: flex;
         flex-direction: column;
         justify-content: center;
       }
+      .person-photo {
+        width: 120px;
+        height: 120px;
+        border-radius: 8px;
+        object-fit: cover;
+        border: 1px solid #eee;
+        background: #fafafa;
+      }
+      .person.pi .person-photo {
+        height: 180px;
+      }
       .person-name {
         font-weight: bold;
         color: #4b6e2f;
-        font-size: 2.2em;
-        margin-bottom: 0.4em;
+        font-size: 1.1em;
+        margin-bottom: 0.2em;
       }
       .person-role {
         color: #888;
-        font-size: 2em;
-        margin-bottom: 0.4em;
+        font-size: 1em;
+        margin-bottom: 0.2em;
       }
       .person-desc {
         color: #555;
-        font-size: 1.96em;
-        margin-bottom: 0.4em;
+        font-size: 0.98em;
+        margin-bottom: 0.2em;
       }
       .person-teaching {
         color: #888;
-        font-size: 1.9em;
-        margin-top: 0.6em;
+        font-size: 0.95em;
+        margin-top: 0.3em;
       }
       .person-teaching br {
-        margin-top: 0.4em;
+        margin-top: 0.2em;
         display: block;
         content: "";
       }
@@ -102,7 +102,7 @@
         grid-column: span 2;
       }
       .person:not(.pi) .person-photo {
-        margin-bottom: 1em;
+        margin-bottom: 0.5em;
       }
       .person:not(.pi) .person-info {
         margin-left: 0;
