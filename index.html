@@ -1,598 +1,694 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>SIRIUS Lab website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="images/lab_logo.png" />
-    <style>
-      body {
-        font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
-        background: #fff;
-        color: #222;
-        margin: 0;
-        padding: 0;
-        font-size: 20px;
-      }
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 32px 48px 64px 48px;
-      }
-      h1 {
-        color: #4b6e2f;
-        font-size: 1.1em;
-        font-weight: 700;
-        margin-bottom: 0.2em;
-      }
-      h2 {
-        color: #4b6e2f;
-        font-size: 0.95em;
-        font-weight: 700;
-        margin-top: 2em;
-        margin-bottom: 0.5em;
-      }
-      .meta {
-        color: #888;
-        font-size: 0.95em;
-        margin-bottom: 1.5em;
-      }
-      .news-list {
-        margin: 0 0 2em 0;
-        padding: 0 0 0 1.2em;
-        list-style: disc;
-      }
-      .news-list li {
-        margin-bottom: 0.7em;
-        line-height: 1.5;
-      }
-      .news-list .highlight {
-        font-weight: bold;
-        color: #4b6e2f;
-      }
-      .section {
-        margin-bottom: 2.5em;
-      }
-      a {
-        color: #a05a6c;
-        text-decoration: underline;
-      }
-      .topics, .past-topics {
-        color: #a05a6c;
-        font-weight: 500;
-      }
-      .past-topics {
-        color: #b05a6c;
-      }
-      .pub-title {
-        font-size: 1.05em;
-        font-weight: bold;
-        margin-bottom: 0.2em;
-      }
-      .pub-authors {
-        margin-bottom: 0.2em;
-      }
-      .pub-links {
-        margin-top: 0.5em;
-      }
-      .pub-links a {
-        color: #a05a6c;
-        margin-right: 4px;
-      }
-      .pub-links a:first-child {
-        color: #7a9c3a;
-      }
-      .pub-venue {
-        font-weight: bold;
-        color: #222;
-        display: block;
-        margin-bottom: 0.3em;
-      }
+
+<head>
+  <meta charset="UTF-8" />
+  <title>SIRIUS Lab website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/lab_logo.png" />
+  <style>
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
+      background: #fff;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      font-size: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 48px 64px 48px;
+    }
+
+    h1 {
+      color: #4b6e2f;
+      font-size: 1.1em;
+      font-weight: 700;
+      margin-bottom: 0.2em;
+    }
+
+    h2 {
+      color: #4b6e2f;
+      font-size: 0.95em;
+      font-weight: 700;
+      margin-top: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    .meta {
+      color: #888;
+      font-size: 0.95em;
+      margin-bottom: 1.5em;
+    }
+
+    .news-list {
+      margin: 0 0 2em 0;
+      padding: 0 0 0 1.2em;
+      list-style: disc;
+    }
+
+    .news-list li {
+      margin-bottom: 0.7em;
+      line-height: 1.5;
+    }
+
+    .news-list .highlight {
+      font-weight: bold;
+      color: #4b6e2f;
+    }
+
+    .section {
+      margin-bottom: 2.5em;
+    }
+
+    a {
+      color: #a05a6c;
+      text-decoration: underline;
+    }
+
+    .topics,
+    .past-topics {
+      color: #a05a6c;
+      font-weight: 500;
+    }
+
+    .past-topics {
+      color: #b05a6c;
+    }
+
+    .pub-title {
+      font-size: 1.05em;
+      font-weight: bold;
+      margin-bottom: 0.2em;
+    }
+
+    .pub-authors {
+      margin-bottom: 0.2em;
+    }
+
+    .pub-links {
+      margin-top: 0.5em;
+    }
+
+    .pub-links a {
+      color: #a05a6c;
+      margin-right: 4px;
+    }
+
+    .pub-links a:first-child {
+      color: #7a9c3a;
+    }
+
+    .pub-venue {
+      font-weight: bold;
+      color: #222;
+      display: block;
+      margin-bottom: 0.3em;
+    }
+
+    .publication-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 2em;
+    }
+
+    .publication-img {
+      width: 320px;
+      min-width: 320px;
+      height: auto;
+      border-radius: 8px;
+      object-fit: contain;
+      background: #fafafa;
+      display: block;
+    }
+
+    .publication-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (max-width: 600px) {
       .publication-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 24px;
-        margin-bottom: 2em;
-      }
-      .publication-img {
-        width: 320px;
-        min-width: 320px;
-        height: auto;
-        border-radius: 8px;
-        object-fit: contain;
-        background: #fafafa;
-        display: block;
-      }
-      .publication-info {
-        flex: 1;
-        display: flex;
         flex-direction: column;
-        justify-content: center;
+        gap: 12px;
       }
-      @media (max-width: 600px) {
-        .publication-item {
-          flex-direction: column;
-          gap: 12px;
-        }
-        .publication-img {
-          width: 100%;
-          max-width: 100%;
-        }
-      }
-      .lab-desc {
-        color: #888;
-        font-size: 1.1em;
-        line-height: 1.1;
-        font-weight: 400;
-        text-align: justify;
-      }
-      .photo-player {
+
+      .publication-img {
         width: 100%;
         max-width: 100%;
-        margin: 0 auto 1.5em auto;
-        text-align: center;
       }
-      .photo-player img {
-        width: 100%;
-        max-width: 840px;
-        height: auto;
-        border-radius: 10px;
-        border: 1px solid #ddd;
-        box-shadow: 0 2px 8px #0001;
-        margin-bottom: 0.5em;
-      }
-      .carousel-controls {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1em;
-      }
-      .carousel-controls button {
-        background: #f7f7f7;
-        border: 1px solid #ccc;
-        border-radius: 50%;
-        width: 2em;
-        height: 2em;
-        font-size: 1.2em;
-        color: #4b6e2f;
-        cursor: pointer;
-        transition: background 0.2s;
-      }
-      .carousel-controls button:hover {
-        background: #e0e0e0;
-      }
-      #carousel-indicator {
-        color: #888;
-        font-size: 1em;
-      }
-    </style>
-  </head>
-  <body>
-    <nav style="background: #f7f7f7; border-bottom: 1px solid #e0e0e0; padding: 0.7em 0; margin-bottom: 2em;">
-      <div style="max-width: 1000px; margin: 0 auto; display: flex; gap: 2em;">
-        <a href="index.html" style="color: #4b6e2f; font-weight: bold; text-decoration: none;">Home</a>
-        <a href="people.html" style="color: #4b6e2f; font-weight: bold; text-decoration: none;">People</a>
-        <a href="index.html#research" style="color: #4b6e2f; font-weight: bold; text-decoration: none;">Research</a>
-        <a href="publications.html" style="color: #4b6e2f; font-weight: bold; text-decoration: none;">Publications</a>
-      </div>
-    </nav>
-    <div class="container" id="home">
-      <div class="photo-player">
-        <img id="carousel-img" src="images/lab_photo.png" alt="Lab Photo" />
-      </div>
-      <h1> SIRIUS Lab - Surgical & Intelligent Robot & Innovative Unmanned Systems Laboratory</h1>
-      <div class="lab-desc">
-        SIRIUS Lab focuses on the intersection of <b style="color:#1a4fa3;">artificial intelligence</b>, <b style="color:#e67e22;">robotics</b>, and <b style="color:#8e44ad;">surgical data science</b>. We design learning-enabled robotic algorithms and platforms to understand the surgical scene, plan dexterous manipulation, and provide real-time autonomous assistance. Our mission is to make surgery safer, more precise, and universally accessible while uncovering new insights into human–machine collaboration in the operating room.
-      </div>
-      <div class="hiring">
+    }
+
+    .lab-desc {
+      color: #888;
+      font-size: 1.1em;
+      line-height: 1.1;
+      font-weight: 400;
+      text-align: justify;
+    }
+
+    .photo-player {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto 1.5em auto;
+      text-align: center;
+    }
+
+    .photo-player img {
+      width: 100%;
+      max-width: 840px;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 8px #0001;
+      margin-bottom: 0.5em;
+    }
+
+    .carousel-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+    }
+
+    .carousel-controls button {
+      background: #f7f7f7;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      width: 2em;
+      height: 2em;
+      font-size: 1.2em;
+      color: #4b6e2f;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .carousel-controls button:hover {
+      background: #e0e0e0;
+    }
+
+    #carousel-indicator {
+      color: #888;
+      font-size: 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <nav style="background: #f7f7f7; border-bottom: 1px solid #e0e0e0; padding: 0.7em 0; margin-bottom: 2em;">
+    <div style="max-width: 1000px; margin: 0 auto; display: flex; gap: 2em;">
+      <a href="index.html" style="color: #4b6e2f; font-weight: bold; text-decoration: none;">Home</a>
+      <a href="people.html" style="color: #4b6e2f; font-weight: bold; text-decoration: none;">People</a>
+      <a href="index.html#research" style="color: #4b6e2f; font-weight: bold; text-decoration: none;">Research</a>
+      <a href="publications.html" style="color: #4b6e2f; font-weight: bold; text-decoration: none;">Publications</a>
+    </div>
+  </nav>
+  <div class="container" id="home">
+    <div class="photo-player">
+      <img id="carousel-img" src="images/lab_photo.png" alt="Lab Photo" />
+    </div>
+    <h1> SIRIUS Lab - Surgical & Intelligent Robot & Innovative Unmanned Systems Laboratory</h1>
+    <div class="lab-desc">
+      SIRIUS Lab focuses on the intersection of <b style="color:#1a4fa3;">artificial intelligence</b>, <b
+        style="color:#e67e22;">robotics</b>, and <b style="color:#8e44ad;">surgical data science</b>. We design
+      learning-enabled robotic algorithms and platforms to understand the surgical scene, plan dexterous manipulation,
+      and provide real-time autonomous assistance. Our mission is to make surgery safer, more precise, and universally
+      accessible while uncovering new insights into human–machine collaboration in the operating room.
+    </div>
+    <div class="hiring">
       </br>
-        <b style="color:#1a4fa3;">We have openings for postdocs, research assistants and visiting students. Please email us if you're interested!</b>
-      </div>
+      <b style="color:#1a4fa3;">We have openings for postdocs, research assistants and visiting students. Please email
+        us if you're interested!</b>
+    </div>
 
-      <div class="section">
-        <h2>News</h2>
-        <ul class="news-list">
-          <li><span class="highlight">[03/2025]</span> We are co-organizing <a href="https://sites.google.com/view/miccai-2025-colas/home" target="_blank" style="color: #e75480; font-weight: bold;">COLAS</a> workshop at MICCAI 2025!</li>
-          <li><span class="highlight">[03/2025]</span> One paper was accepted at IEEE ISBI 2025!</li>
-          <li><span class="highlight">[02/2025]</span> One paper was accepted at ICRA 2025!</li>
-          <li><span class="highlight">[05/2024]</span> One paper was accepted at ICML 2024!</li>
-          <li><span class="highlight">[05/2024]</span> One paper was accepted at ICRA 2024!</li>
-          <li><span class="highlight">[05/2024]</span> One paper was accepted at Machine Learning.</li>
-          <li><span class="highlight">[07/2023]</span> One paper was accepted at IEEE TMI!</li>
-          <li><span class="highlight">[01/2023]</span> One paper was accepted at Surgical Endoscopy!</li>
-          <li><span class="highlight">[01/2022]</span> One paper was accepted at IEEE TPAMI!</li>
-        </ul>
-      </div>
+    <div class="section">
+      <h2>News</h2>
+      <ul class="news-list">
+        <li><span class="highlight">[03/2025]</span> We are co-organizing <a
+            href="https://sites.google.com/view/miccai-2025-colas/home" target="_blank"
+            style="color: #e75480; font-weight: bold;">COLAS</a> workshop at MICCAI 2025!</li>
+        <li><span class="highlight">[03/2025]</span> One paper was accepted at IEEE ISBI 2025!</li>
+        <li><span class="highlight">[02/2025]</span> One paper was accepted at ICRA 2025!</li>
+        <li><span class="highlight">[05/2024]</span> One paper was accepted at ICML 2024!</li>
+        <li><span class="highlight">[05/2024]</span> One paper was accepted at ICRA 2024!</li>
+        <li><span class="highlight">[05/2024]</span> One paper was accepted at Machine Learning.</li>
+        <li><span class="highlight">[07/2023]</span> One paper was accepted at IEEE TMI!</li>
+        <li><span class="highlight">[01/2023]</span> One paper was accepted at Surgical Endoscopy!</li>
+        <li><span class="highlight">[01/2022]</span> One paper was accepted at IEEE TPAMI!</li>
+      </ul>
+    </div>
 
-      <div class="section">
-        <h2 id="research">Research <span style="font-size: 0.7em; font-weight: 400;">( <span id="show-selected" style="color: #222; font-weight: 600; cursor: pointer;">show selected</span> / <span id="show-by-date" style="color: #7a9c3a; cursor: pointer;">show all by date</span> / <span id="show-by-topic" style="color: #7a9c3a; cursor: pointer;">show all by topic</span> )</span></h2>
-        <div>
-          <span class="topics" data-topic="surgical-ai">Surgical AI</span> /
-          <span class="topics" data-topic="robot-perception">Robot Perception</span> /
-          <span class="topics" data-topic="robotic-learning">Robotic Learning</span>
-          <br>
-          <span style="color: #888; font-size: 0.9em;">(* / †: indicates equal contribution.)</span>
+    <div class="section">
+      <h2 id="research">Research <span style="font-size: 0.7em; font-weight: 400;">( <span id="show-selected"
+            style="color: #222; font-weight: 600; cursor: pointer;">show selected</span> / <span id="show-by-date"
+            style="color: #7a9c3a; cursor: pointer;">show all by date</span> / <span id="show-by-topic"
+            style="color: #7a9c3a; cursor: pointer;">show all by topic</span> )</span></h2>
+      <div>
+        <span class="topics" data-topic="surgical-ai">Surgical AI</span> /
+        <span class="topics" data-topic="robot-perception">Robot Perception</span> /
+        <span class="topics" data-topic="robotic-learning">Robotic Learning</span>
+        <br>
+        <span style="color: #888; font-size: 0.9em;">(* / †: indicates equal contribution.)</span>
+      </div>
+      <div style="margin-top: 1.5em;" id="publications-container">
+        <div class="publication-item" data-topics="surgical-ai" data-date="2023">
+          <img class="publication-img" src="images/publications/tmi2023.jpg"
+            alt="Concept Graph Neural Networks for Video Understanding and Risk Mitigation">
+          <div class="publication-info">
+            <div class="pub-title">
+              Concept Graph Neural Networks for Video Understanding and Risk Mitigation
+            </div>
+            <div class="pub-authors">
+              <b>Y. Ban</b>, J. Eckhoff, T. Ward, D. Hashimoto, O. Meireles, D. Rus, G. Rosman
+            </div>
+            <div class="pub-links">
+              <span class="pub-venue">IEEE Transactions on Medical Imaging (TMI), 2023</span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
+            </div>
+          </div>
         </div>
-        <div style="margin-top: 1.5em;" id="publications-container">
-          <div class="publication-item" data-topics="surgical-ai" data-date="2023">
-            <img class="publication-img" src="images/publications/tmi2023.jpg" alt="Concept Graph Neural Networks for Video Understanding and Risk Mitigation">
-            <div class="publication-info">
-              <div class="pub-title">
-                Concept Graph Neural Networks for Video Understanding and Risk Mitigation
-              </div>
-              <div class="pub-authors">
-                <b>Y. Ban</b>, J. Eckhoff, T. Ward, D. Hashimoto, O. Meireles, D. Rus, G. Rosman
-              </div>
-              <div class="pub-links">
-                <span class="pub-venue">IEEE Transactions on Medical Imaging (TMI), 2023</span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        <div class="publication-item" data-topics="surgical-ai" data-date="2023">
+          <img class="publication-img" src="images/publications/surgend2023.jpg"
+            alt="TEsoNet: Knowledge Transfer from laparoscopic Sleeve Gastrectomy to the Ivor-Lewis Esophagectomy">
+          <div class="publication-info">
+            <div class="pub-title">
+              TEsoNet: Knowledge Transfer from laparoscopic Sleeve Gastrectomy to the Ivor-Lewis Esophagectomy
+            </div>
+            <div class="pub-authors">
+              J.A. Eckhoff<sup>*</sup>, <b>Y. Ban<sup>*</sup></b>, G. Rosman, D.T. Müller, DA. Hashimoto, D. Rus, C.
+              Bruns, HF Fuchs, O. Meireles
+            </div>
+            <div class="pub-links">
+              <span class="pub-venue">Surgical Endoscopy, 2023</span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="surgical-ai" data-date="2023">
-            <img class="publication-img" src="images/publications/surgend2023.jpg" alt="TEsoNet: Knowledge Transfer from laparoscopic Sleeve Gastrectomy to the Ivor-Lewis Esophagectomy">
-            <div class="publication-info">
-              <div class="pub-title">
-                TEsoNet: Knowledge Transfer from laparoscopic Sleeve Gastrectomy to the Ivor-Lewis Esophagectomy
-              </div>
-              <div class="pub-authors">
-                J.A. Eckhoff<sup>*</sup>, <b>Y. Ban<sup>*</sup></b>, G. Rosman, D.T. Müller, DA. Hashimoto, D. Rus, C. Bruns, HF Fuchs, O. Meireles
-              </div>
-              <div class="pub-links">
-                <span class="pub-venue">Surgical Endoscopy, 2023</span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="robot-perception" data-date="2022">
+          <img class="publication-img" src="images/publications/tpami2022.jpg"
+            alt="TransCenter: Transformers with Dense Queries for Multiple-Object Tracking">
+          <div class="publication-info">
+            <div class="pub-title">
+              TransCenter: Transformers with Dense Queries for Multiple-Object Tracking
+            </div>
+            <div class="pub-authors">
+              Y. Xu<sup>*</sup>, <b>Y. Ban<sup>*</sup></b>, G. Delorme, C. Gan, D. Rus, X. Alameda-Pineda
+            </div>
+            <div class="pub-links">
+              <span class="pub-venue">IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI),
+                2022</span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="robot-perception" data-date="2022">
-            <img class="publication-img" src="images/publications/tpami2022.jpg" alt="TransCenter: Transformers with Dense Queries for Multiple-Object Tracking">
-            <div class="publication-info">
-              <div class="pub-title">
-                TransCenter: Transformers with Dense Queries for Multiple-Object Tracking
-              </div>
-              <div class="pub-authors">
-                Y. Xu<sup>*</sup>, <b>Y. Ban<sup>*</sup></b>, G. Delorme, C. Gan, D. Rus, X. Alameda-Pineda
-              </div>
-              <div class="pub-links">
-                <span class="pub-venue">IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2022</span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="surgical-ai robotic-learning" data-date="2022">
+          <img class="publication-img" src="images/publications/ral2022.jpg"
+            alt="SUPR-GAN: SUrgical PRediction GAN for Event Anticipation in Laparoscopic and Robotic Surgery">
+          <div class="publication-info">
+            <div class="pub-title">
+              SUPR-GAN: SUrgical PRediction GAN for Event Anticipation in Laparoscopic and Robotic Surgery
+            </div>
+            <div class="pub-authors">
+              <b>Y. Ban</b>, G. Rosman, J. Eckhoff, T. Ward, D. Hashimoto, T. Kondo, H. Iwaki, O. Meireles, D. Rus
+            </div>
+            <div class="pub-links">
+              <span class="pub-venue">IEEE Robotics and Automation Letters (RA-L) & ICRA, 2022</span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="surgical-ai robotic-learning" data-date="2022">
-            <img class="publication-img" src="images/publications/ral2022.jpg" alt="SUPR-GAN: SUrgical PRediction GAN for Event Anticipation in Laparoscopic and Robotic Surgery">
-            <div class="publication-info">
-              <div class="pub-title">
-                SUPR-GAN: SUrgical PRediction GAN for Event Anticipation in Laparoscopic and Robotic Surgery
-              </div>
-              <div class="pub-authors">
-                <b>Y. Ban</b>, G. Rosman, J. Eckhoff, T. Ward, D. Hashimoto, T. Kondo, H. Iwaki, O. Meireles, D. Rus
-              </div>
-              <div class="pub-links">
-                <span class="pub-venue">IEEE Robotics and Automation Letters (RA-L) & ICRA, 2022</span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="surgical-ai" data-date="2022">
+          <img class="publication-img" src="images/publications/surgend2022.webp"
+            alt="Artificial Intelligence Prediction of Cholecystectomy Operative Course from Automated Identification of Gallbladder Inflammation">
+          <div class="publication-info">
+            <div class="pub-title">
+              Artificial Intelligence Prediction of Cholecystectomy Operative Course from Automated Identification of
+              Gallbladder Inflammation
+            </div>
+            <div class="pub-authors">
+              T.M. Ward, D.A. Hashimoto, <b>Y. Ban</b>, G. Rosman, O. Meireles
+            </div>
+            <div class="pub-links">
+              <span class="pub-venue">Surgical Endoscopy, 2022</span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="surgical-ai" data-date="2022">
-            <img class="publication-img" src="images/publications/surgend2022.webp" alt="Artificial Intelligence Prediction of Cholecystectomy Operative Course from Automated Identification of Gallbladder Inflammation">
-            <div class="publication-info">
-              <div class="pub-title">
-                Artificial Intelligence Prediction of Cholecystectomy Operative Course from Automated Identification of Gallbladder Inflammation
-              </div>
-              <div class="pub-authors">
-                T.M. Ward, D.A. Hashimoto, <b>Y. Ban</b>, G. Rosman, O. Meireles
-              </div>
-              <div class="pub-links">
-                <span class="pub-venue">Surgical Endoscopy, 2022</span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="surgical-ai" data-date="2021">
+          <img class="publication-img" src="images/publications/surgend2021.jpg"
+            alt="Automated Operative Phase Identification in Peroral Endoscopic Myotomy">
+          <div class="publication-info">
+            <div class="pub-title">
+              Automated Operative Phase Identification in Peroral Endoscopic Myotomy
+            </div>
+            <div class="pub-authors">
+              T.M. Ward, D.A. Hashimoto, <b>Y. Ban</b>, D.W. Rattner, H. Inoue, K.D. Lillemoe, D. Rus, G. Rosman, O.
+              Meireles
+            </div>
+            <div class="pub-links">
+              <span class="pub-venue">Surgical Endoscopy, 2021</span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="surgical-ai" data-date="2021">
-            <img class="publication-img" src="images/publications/surgend2021.jpg" alt="Automated Operative Phase Identification in Peroral Endoscopic Myotomy">
-            <div class="publication-info">
-              <div class="pub-title">
-                Automated Operative Phase Identification in Peroral Endoscopic Myotomy
-              </div>
-              <div class="pub-authors">
-                T.M. Ward, D.A. Hashimoto, <b>Y. Ban</b>, D.W. Rattner, H. Inoue, K.D. Lillemoe, D. Rus, G. Rosman, O. Meireles
-              </div>
-              <div class="pub-links">
-                <span class="pub-venue">Surgical Endoscopy, 2021</span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="surgical-ai" data-date="2021">
+          <img class="publication-img" src="images/publications/surgery2021.jpg" alt="Computer Vision in Surgery">
+          <div class="publication-info">
+            <div class="pub-title">
+              Computer Vision in Surgery
+            </div>
+            <div class="pub-authors">
+              T.M. Ward, P. Mascagni, <b>Y. Ban</b>, G. Rosman, N. Padoy, O. Meireles, D.A. Hashimoto
+            </div>
+            <div class="pub-links">
+              <span class="pub-venue">Elsevier Surgery, 2021</span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="surgical-ai" data-date="2021">
-            <img class="publication-img" src="images/publications/surgery2021.jpg" alt="Computer Vision in Surgery">
-            <div class="publication-info">
-              <div class="pub-title">
-                Computer Vision in Surgery
-              </div>
-              <div class="pub-authors">
-                T.M. Ward, P. Mascagni, <b>Y. Ban</b>, G. Rosman, N. Padoy, O. Meireles, D.A. Hashimoto
-              </div>
-              <div class="pub-links">
-                <span class="pub-venue">Elsevier Surgery, 2021</span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="robot-perception" data-date="2019">
+          <img class="publication-img" src="images/publications/tpami2019.png"
+            alt="Variational Bayesian Inference for Audio-Visual Tracking of Multiple Speakers">
+          <div class="publication-info">
+            <div class="pub-title">
+              Variational Bayesian Inference for Audio-Visual Tracking of Multiple Speakers
+            </div>
+            <div class="pub-authors">
+              <b>Y. Ban</b>, X. Alameda-Pineda, L. Girin, R. Horaud
+            </div>
+            <div class="pub-links">
+              <span class="pub-venue">IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI),
+                2019</span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="robot-perception" data-date="2019">
-            <img class="publication-img" src="images/publications/tpami2019.png" alt="Variational Bayesian Inference for Audio-Visual Tracking of Multiple Speakers">
-            <div class="publication-info">
-              <div class="pub-title">
-                Variational Bayesian Inference for Audio-Visual Tracking of Multiple Speakers
-              </div>
-              <div class="pub-authors">
-                <b>Y. Ban</b>, X. Alameda-Pineda, L. Girin, R. Horaud
-              </div>
-              <div class="pub-links">
-                <span class="pub-venue">IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2019</span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="robot-perception" data-date="2019">
+          <img class="publication-img" src="images/publications/spl2019.png"
+            alt="Tracking Multiple Audio Sources with the Von Mises Distribution and Variational EM">
+          <div class="publication-info">
+            <div class="pub-title">
+              Tracking Multiple Audio Sources with the Von Mises Distribution and Variational EM
+            </div>
+            <div class="pub-authors">
+              <b>Y. Ban</b>, X. Alameda-Pineda, C. Evers, R. Horaud
+            </div>
+            <div class="pub-links">
+              <span class="pub-venue">IEEE Signal Processing Letters (SPL), 2019</span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="robot-perception" data-date="2019">
-            <img class="publication-img" src="images/publications/spl2019.png" alt="Tracking Multiple Audio Sources with the Von Mises Distribution and Variational EM">
-            <div class="publication-info">
-              <div class="pub-title">
-                Tracking Multiple Audio Sources with the Von Mises Distribution and Variational EM
-              </div>
-              <div class="pub-authors">
-                <b>Y. Ban</b>, X. Alameda-Pineda, C. Evers, R. Horaud
-              </div>
-              <div class="pub-links">
-                <span class="pub-venue">IEEE Signal Processing Letters (SPL), 2019</span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="robot-perception" data-date="2022">
+          <img class="publication-img" src="images/publications/icra2022.jpg"
+            alt="A Deep Concept Graph Network for Interaction-Aware Trajectory Prediction">
+          <div class="publication-info">
+            <div class="pub-title">
+              A Deep Concept Graph Network for Interaction-Aware Trajectory Prediction
+            </div>
+            <div class="pub-authors">
+              <b>Y. Ban<sup>*</sup></b>, X. Li<sup>*</sup>, G. Rosman, I. Gilitschenski, O. Meireles, S. Karaman, D. Rus
+            </div>
+            <div class="pub-links">
+              <span class="pub-venue">IEEE International Conference on Robotics and Automation (ICRA), 2022</span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="robot-perception" data-date="2022">
-            <img class="publication-img" src="images/publications/icra2022.jpg" alt="A Deep Concept Graph Network for Interaction-Aware Trajectory Prediction">
-            <div class="publication-info">
-              <div class="pub-title">
-                A Deep Concept Graph Network for Interaction-Aware Trajectory Prediction
-              </div>
-              <div class="pub-authors">
-                <b>Y. Ban<sup>*</sup></b>, X. Li<sup>*</sup>, G. Rosman, I. Gilitschenski, O. Meireles, S. Karaman, D. Rus
-              </div>
-              <div class="pub-links">
-                <span class="pub-venue">IEEE International Conference on Robotics and Automation (ICRA), 2022</span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <!-- 2025 Publications -->
+        <div class="publication-item" data-topics="HOI-Synthesis" data-date="2025">
+          <img class="publication-img" src="images/publications/HID-SSM.png"
+            alt="Holistic Surgical Phase Recognition with Hierarchical Input Dependent State Space Models">
+          <div class="publication-info">
+            <div class="pub-title">Holistic Surgical Phase Recognition with Hierarchical Input Dependent State Space
+              Models</div>
+            <div class="pub-authors">H. Wu, T. Wang, M. Lechner, R. Hasani, JA. Eckhoff,
+              P. Pak, OR. Meireles, G. Rosman, Y. Ban, D. Rus</div>
+            <div class="pub-links">
+              <span class="pub-venue"></span>
+              <a href="https://william-hywu.github.io/HID-SSM/">[page]</a><a
+                href="https://github.com/William-HYWu/Hierarchical-Input-Dependent-State-Space-Model">[code]</a><a
+                href="https://arxiv.org/abs/2506.21330">[paper]</a>
             </div>
           </div>
-          <!-- 2025 Publications -->
-          <div class="publication-item" data-topics="HOI-Synthesis" data-date="2025">
-            <img class="publication-img" src="images/publications/longvideo.gif" alt="GenHOI: Generalizing Text-driven 4D Human-Object Interaction Synthesis for Unseen Objects">
-            <div class="publication-info">
-              <div class="pub-title">GenHOI: Generalizing Text-driven 4D Human-Object Interaction Synthesis for Unseen Objects</div>
-              <div class="pub-authors">S. Li, H. Zhang, X. Chen, Y. Wang<sup>†</sup>, Y. Ban<sup>†</sup></div>
-              <div class="pub-links">
-                <span class="pub-venue"></span>
-                <a href="https://etach-qs.github.io/GenHOI_project/">[page]</a><a href="https://github.com/etach-qs/GenHOI">[code]</a><a href="https://arxiv.org/abs/2506.15483">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="HOI-Synthesis" data-date="2025">
+          <img class="publication-img" src="images/publications/longvideo.gif"
+            alt="GenHOI: Generalizing Text-driven 4D Human-Object Interaction Synthesis for Unseen Objects">
+          <div class="publication-info">
+            <div class="pub-title">GenHOI: Generalizing Text-driven 4D Human-Object Interaction Synthesis for Unseen
+              Objects</div>
+            <div class="pub-authors">S. Li, H. Zhang, X. Chen, Y. Wang<sup>†</sup>, Y. Ban<sup>†</sup></div>
+            <div class="pub-links">
+              <span class="pub-venue"></span>
+              <a href="https://etach-qs.github.io/GenHOI_project/">[page]</a><a
+                href="https://github.com/etach-qs/GenHOI">[code]</a><a
+                href="https://arxiv.org/abs/2506.15483">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="robotic-learning" data-date="2025">
-            <img class="publication-img" src="images/publications/time_reversal.gif" alt="Time Reversal Symmetry for Efficient Robotic Manipulations in Deep Reinforcement Learning">
-            <div class="publication-info">
-              <div class="pub-title">Time Reversal Symmetry for Efficient Robotic Manipulations in Deep Reinforcement Learning</div>
-              <div class="pub-authors">Y. Jiang, J. Hu, P. Weng<sup>†</sup>, Y. Ban<sup>†</sup></div>
-              <div class="pub-links">
-                <span class="pub-venue"></span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="https://arxiv.org/abs/2505.13925">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="robotic-learning" data-date="2025">
+          <img class="publication-img" src="images/publications/time_reversal.gif"
+            alt="Time Reversal Symmetry for Efficient Robotic Manipulations in Deep Reinforcement Learning">
+          <div class="publication-info">
+            <div class="pub-title">Time Reversal Symmetry for Efficient Robotic Manipulations in Deep Reinforcement
+              Learning</div>
+            <div class="pub-authors">Y. Jiang, J. Hu, P. Weng<sup>†</sup>, Y. Ban<sup>†</sup></div>
+            <div class="pub-links">
+              <span class="pub-venue"></span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="https://arxiv.org/abs/2505.13925">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="surgical-ai" data-date="2025">
-            <img class="publication-img" src="images/publications/temporal_asymetry.png" alt="Temporal Propagation of Asymmetric Feature Pyramid for Surgical Scene Segmentation">
-            <div class="publication-info">
-              <div class="pub-title">Temporal Propagation of Asymmetric Feature Pyramid for Surgical Scene Segmentation</div>
-              <div class="pub-authors">C. Yuan, Y. Ban</div>
-              <div class="pub-links">
-                <span class="pub-venue"></span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="surgical-ai" data-date="2025">
+          <img class="publication-img" src="images/publications/temporal_asymetry.png"
+            alt="Temporal Propagation of Asymmetric Feature Pyramid for Surgical Scene Segmentation">
+          <div class="publication-info">
+            <div class="pub-title">Temporal Propagation of Asymmetric Feature Pyramid for Surgical Scene Segmentation
+            </div>
+            <div class="pub-authors">C. Yuan, Y. Ban</div>
+            <div class="pub-links">
+              <span class="pub-venue"></span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
+        </div>
 
-          <div class="publication-item" data-topics="robot-perception" data-date="2025">
-            <img class="publication-img" src="images/publications/3d_deform.gif" alt="Tracking-Aware Deformation Field Estimation for Non-rigid 3D Reconstruction in Robotic Surgeries">
-            <div class="publication-info">
-              <div class="pub-title">Tracking-Aware Deformation Field Estimation for Non-rigid 3D Reconstruction in Robotic Surgeries</div>
-              <div class="pub-authors">Z. Wang, H. Fang, Y. Xu, Y. Ban</div>
-              <div class="pub-links">
-                <span class="pub-venue"></span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        <div class="publication-item" data-topics="robot-perception" data-date="2025">
+          <img class="publication-img" src="images/publications/3d_deform.gif"
+            alt="Tracking-Aware Deformation Field Estimation for Non-rigid 3D Reconstruction in Robotic Surgeries">
+          <div class="publication-info">
+            <div class="pub-title">Tracking-Aware Deformation Field Estimation for Non-rigid 3D Reconstruction in
+              Robotic Surgeries</div>
+            <div class="pub-authors">Z. Wang, H. Fang, Y. Xu, Y. Ban</div>
+            <div class="pub-links">
+              <span class="pub-venue"></span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="robotic-learning" data-date="2025">
-            <img class="publication-img" src="images/publications/dsp_policy.gif" alt="Diffusion Stabilizer Policy for Automated Surgical Robot Manipulations">
-            <div class="publication-info">
-              <div class="pub-title">Diffusion Stabilizer Policy for Automated Surgical Robot Manipulations</div>
-              <div class="pub-authors">C. Ho, J. Hu, H. Wang, Q. Dou, Y. Ban</div>
-              <div class="pub-links">
-                <span class="pub-venue"></span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="robotic-learning" data-date="2025">
+          <img class="publication-img" src="images/publications/dsp_policy.gif"
+            alt="Diffusion Stabilizer Policy for Automated Surgical Robot Manipulations">
+          <div class="publication-info">
+            <div class="pub-title">Diffusion Stabilizer Policy for Automated Surgical Robot Manipulations</div>
+            <div class="pub-authors">C. Ho, J. Hu, H. Wang, Q. Dou, Y. Ban</div>
+            <div class="pub-links">
+              <span class="pub-venue"></span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="surgical-ai" data-date="2025">
-            <img class="publication-img" src="images/publications/hyper_prediction.png" alt="Hypergraph-Transformer (HGT) for Interactive Event Prediction in Laparoscopic and Robotic Surgery">
-            <div class="publication-info">
-              <div class="pub-title">Hypergraph-Transformer (HGT) for Interactive Event Prediction in Laparoscopic and Robotic Surgery</div>
-              <div class="pub-authors">L. Yin, Y. Ban, J. Eckhoff, O. Meireles, D. Rus, G. Rosman</div>
-              <div class="pub-links">
-                <span class="pub-venue">IEEE International Conference on Robotics and Automation (ICRA), 2025</span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="surgical-ai" data-date="2025">
+          <img class="publication-img" src="images/publications/hyper_prediction.png"
+            alt="Hypergraph-Transformer (HGT) for Interactive Event Prediction in Laparoscopic and Robotic Surgery">
+          <div class="publication-info">
+            <div class="pub-title">Hypergraph-Transformer (HGT) for Interactive Event Prediction in Laparoscopic and
+              Robotic Surgery</div>
+            <div class="pub-authors">L. Yin, Y. Ban, J. Eckhoff, O. Meireles, D. Rus, G. Rosman</div>
+            <div class="pub-links">
+              <span class="pub-venue">IEEE International Conference on Robotics and Automation (ICRA), 2025</span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
-          <!-- 2024 Publications -->
-          <div class="publication-item" data-topics="surgical-ai" data-date="2024">
-            <img class="publication-img" src="images/publications/sam2.jpg" alt="Is Segment Anything Model 2 All You Need for Surgery Video Segmentation? A Systematic Evaluation">
-            <div class="publication-info">
-              <div class="pub-title">Is Segment Anything Model 2 All You Need for Surgery Video Segmentation? A Systematic Evaluation</div>
-              <div class="pub-authors">C. Yuan<sup>*</sup>, J. Jiang<sup>*</sup>, K. Yang<sup>*</sup>, L. Wu, R. Wang, Z. Meng, H. Ping, Z. Xu, H. Wang,Y. Zhou, Y. Jin, Q. Dou, Y. Ban</div>
-              <div class="pub-links">
-                <span class="pub-venue"></span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <!-- 2024 Publications -->
+        <div class="publication-item" data-topics="surgical-ai" data-date="2024">
+          <img class="publication-img" src="images/publications/sam2.jpg"
+            alt="Is Segment Anything Model 2 All You Need for Surgery Video Segmentation? A Systematic Evaluation">
+          <div class="publication-info">
+            <div class="pub-title">Is Segment Anything Model 2 All You Need for Surgery Video Segmentation? A Systematic
+              Evaluation</div>
+            <div class="pub-authors">C. Yuan<sup>*</sup>, J. Jiang<sup>*</sup>, K. Yang<sup>*</sup>, L. Wu, R. Wang, Z.
+              Meng, H. Ping, Z. Xu, H. Wang,Y. Zhou, Y. Jin, Q. Dou, Y. Ban</div>
+            <div class="pub-links">
+              <span class="pub-venue"></span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="robotic-learning" data-date="2025">
-            <img class="publication-img" src="images/publications/two_player.png" alt="Understanding and Reducing the Class-Dependent Effects of Data Augmentation with A Two-Player Game Approach">
-            <div class="publication-info">
-              <div class="pub-title">Understanding and Reducing the Class-Dependent Effects of Data Augmentation with A Two-Player Game Approach</div>
-              <div class="pub-authors">Y. Jiang, Y. Ban<sup>†</sup>, P. Weng<sup>†</sup></div>
-              <div class="pub-links">
-                <span class="pub-venue">Transactions on Machine Learning Research (TMLR), 2025</span>
-                <a href="https://jyp9961.github.io/CLAM_project_page/">[page]</a><a href="https://github.com/jyp9961/CLAM">[code]</a><a href="https://arxiv.org/abs/2407.03146">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="robotic-learning" data-date="2025">
+          <img class="publication-img" src="images/publications/two_player.png"
+            alt="Understanding and Reducing the Class-Dependent Effects of Data Augmentation with A Two-Player Game Approach">
+          <div class="publication-info">
+            <div class="pub-title">Understanding and Reducing the Class-Dependent Effects of Data Augmentation with A
+              Two-Player Game Approach</div>
+            <div class="pub-authors">Y. Jiang, Y. Ban<sup>†</sup>, P. Weng<sup>†</sup></div>
+            <div class="pub-links">
+              <span class="pub-venue">Transactions on Machine Learning Research (TMLR), 2025</span>
+              <a href="https://jyp9961.github.io/CLAM_project_page/">[page]</a><a
+                href="https://github.com/jyp9961/CLAM">[code]</a><a href="https://arxiv.org/abs/2407.03146">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="surgical-ai" data-date="2025">
-            <img class="publication-img" src="images/publications/isbi25.png" alt="Surgical Scene Segmentation by Transformer with Asymmetric Feature Enhancement">
-            <div class="publication-info">
-              <div class="pub-title">Surgical Scene Segmentation by Transformer with Asymmetric Feature Enhancement</div>
-              <div class="pub-authors">C. Yuan, Y. Ban</div>
-              <div class="pub-links">
-                <span class="pub-venue">IEEE International Symposium on Biomedical Imaging (ISBI), 2025</span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="surgical-ai" data-date="2025">
+          <img class="publication-img" src="images/publications/isbi25.png"
+            alt="Surgical Scene Segmentation by Transformer with Asymmetric Feature Enhancement">
+          <div class="publication-info">
+            <div class="pub-title">Surgical Scene Segmentation by Transformer with Asymmetric Feature Enhancement</div>
+            <div class="pub-authors">C. Yuan, Y. Ban</div>
+            <div class="pub-links">
+              <span class="pub-venue">IEEE International Symposium on Biomedical Imaging (ISBI), 2025</span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
-          <div class="publication-item" data-topics="robot-perception" data-date="2024">
-            <img class="publication-img" src="images/publications/icml2024.jpg" alt="INViT: A Generalizable Routing Problem Solver with Invariant Nested View Transformer">
-            <div class="publication-info">
-              <div class="pub-title">INViT: A Generalizable Routing Problem Solver with Invariant Nested View Transformer</div>
-              <div class="pub-authors">H. Fang, Z. Song, P. Weng<sup>†</sup>, Y. Ban<sup>†</sup></div>
-              <div class="pub-links">
-                <span class="pub-venue">International Conference on Machine Learning (ICML),2024</span>
-                <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
-              </div>
+        </div>
+        <div class="publication-item" data-topics="robot-perception" data-date="2024">
+          <img class="publication-img" src="images/publications/icml2024.jpg"
+            alt="INViT: A Generalizable Routing Problem Solver with Invariant Nested View Transformer">
+          <div class="publication-info">
+            <div class="pub-title">INViT: A Generalizable Routing Problem Solver with Invariant Nested View Transformer
+            </div>
+            <div class="pub-authors">H. Fang, Z. Song, P. Weng<sup>†</sup>, Y. Ban<sup>†</sup></div>
+            <div class="pub-links">
+              <span class="pub-venue">International Conference on Machine Learning (ICML),2024</span>
+              <a href="#">[page]</a><a href="#">[code]</a><a href="#">[paper]</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 3em 0 0.0em 0;" />
-    <footer style="text-align:center; color:#888; font-size:0.8em; margin-top:0.5em; margin-bottom: 0.5em; padding:0.5em 0;">
-      © SJTU SIRIUS Lab
-    </footer>
-    <script>
-      // List your image paths here
-      const photos = [
-        "images/lab_photo.png",
-        "images/lab_photo.png",
-        "images/lab_photo.png"
-      ];
-      let currentPhoto = 0;
-      let carouselInterval;
+  </div>
+  <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 3em 0 0.0em 0;" />
+  <footer
+    style="text-align:center; color:#888; font-size:0.8em; margin-top:0.5em; margin-bottom: 0.5em; padding:0.5em 0;">
+    © SJTU SIRIUS Lab
+  </footer>
+  <script>
+    // List your image paths here
+    const photos = [
+      "images/lab_photo.png",
+      "images/lab_photo.png",
+      "images/lab_photo.png"
+    ];
+    let currentPhoto = 0;
+    let carouselInterval;
 
-      function showPhoto(idx) {
-        const img = document.getElementById('carousel-img');
-        currentPhoto = (idx + photos.length) % photos.length;
-        img.src = photos[currentPhoto];
-      }
+    function showPhoto(idx) {
+      const img = document.getElementById('carousel-img');
+      currentPhoto = (idx + photos.length) % photos.length;
+      img.src = photos[currentPhoto];
+    }
 
-      function nextPhoto() {
-        showPhoto(currentPhoto + 1);
-      }
+    function nextPhoto() {
+      showPhoto(currentPhoto + 1);
+    }
 
-      // Initialize and auto-play
-      document.addEventListener("DOMContentLoaded", function() {
-        showPhoto(0);
-        carouselInterval = setInterval(nextPhoto, 2500);
+    // Initialize and auto-play
+    document.addEventListener("DOMContentLoaded", function () {
+      showPhoto(0);
+      carouselInterval = setInterval(nextPhoto, 2500);
 
-        // Publication filtering functionality
-        const showSelected = document.getElementById('show-selected');
-        const showByDate = document.getElementById('show-by-date');
-        const showByTopic = document.getElementById('show-by-topic');
-        const topics = document.querySelectorAll('.topics');
-        const publications = document.querySelectorAll('.publication-item');
-        let activeTopics = new Set();
+      // Publication filtering functionality
+      const showSelected = document.getElementById('show-selected');
+      const showByDate = document.getElementById('show-by-date');
+      const showByTopic = document.getElementById('show-by-topic');
+      const topics = document.querySelectorAll('.topics');
+      const publications = document.querySelectorAll('.publication-item');
+      let activeTopics = new Set();
 
-        // Topic click handler
-        topics.forEach(topic => {
-          topic.addEventListener('click', () => {
-            const topicName = topic.dataset.topic;
-            if (activeTopics.has(topicName)) {
-              activeTopics.delete(topicName);
-              topic.style.color = '#a05a6c';
-            } else {
-              activeTopics.add(topicName);
-              topic.style.color = '#4b6e2f';
-            }
-            filterPublications();
-          });
-        });
-
-        // Filter buttons click handlers
-        showSelected.addEventListener('click', () => {
-          showSelected.style.color = '#222';
-          showSelected.style.fontWeight = '600';
-          showByDate.style.color = '#7a9c3a';
-          showByDate.style.fontWeight = '400';
-          showByTopic.style.color = '#7a9c3a';
-          showByTopic.style.fontWeight = '400';
+      // Topic click handler
+      topics.forEach(topic => {
+        topic.addEventListener('click', () => {
+          const topicName = topic.dataset.topic;
+          if (activeTopics.has(topicName)) {
+            activeTopics.delete(topicName);
+            topic.style.color = '#a05a6c';
+          } else {
+            activeTopics.add(topicName);
+            topic.style.color = '#4b6e2f';
+          }
           filterPublications();
         });
+      });
 
-        showByDate.addEventListener('click', () => {
-          showSelected.style.color = '#7a9c3a';
-          showSelected.style.fontWeight = '400';
-          showByDate.style.color = '#222';
-          showByDate.style.fontWeight = '600';
-          showByTopic.style.color = '#7a9c3a';
-          showByTopic.style.fontWeight = '400';
-          sortByDate();
-        });
+      // Filter buttons click handlers
+      showSelected.addEventListener('click', () => {
+        showSelected.style.color = '#222';
+        showSelected.style.fontWeight = '600';
+        showByDate.style.color = '#7a9c3a';
+        showByDate.style.fontWeight = '400';
+        showByTopic.style.color = '#7a9c3a';
+        showByTopic.style.fontWeight = '400';
+        filterPublications();
+      });
 
-        showByTopic.addEventListener('click', () => {
-          showSelected.style.color = '#7a9c3a';
-          showSelected.style.fontWeight = '400';
-          showByDate.style.color = '#7a9c3a';
-          showByDate.style.fontWeight = '400';
-          showByTopic.style.color = '#222';
-          showByTopic.style.fontWeight = '600';
-          sortByTopic();
-        });
-
-        function filterPublications() {
-          publications.forEach(pub => {
-            const pubTopics = pub.dataset.topics.split(' ');
-            const shouldShow = activeTopics.size === 0 || 
-              pubTopics.some(topic => activeTopics.has(topic));
-            pub.style.display = shouldShow ? 'flex' : 'none';
-          });
-        }
-
-        function sortByDate() {
-          const container = document.getElementById('publications-container');
-          const pubs = Array.from(publications);
-          pubs.sort((a, b) => b.dataset.date - a.dataset.date);
-          pubs.forEach(pub => container.appendChild(pub));
-        }
-
-        function sortByTopic() {
-          const container = document.getElementById('publications-container');
-          const pubs = Array.from(publications);
-          pubs.sort((a, b) => {
-            const topicsA = a.dataset.topics.split(' ')[0];
-            const topicsB = b.dataset.topics.split(' ')[0];
-            return topicsA.localeCompare(topicsB);
-          });
-          pubs.forEach(pub => container.appendChild(pub));
-        }
-
-        // Initialize with selected view
+      showByDate.addEventListener('click', () => {
+        showSelected.style.color = '#7a9c3a';
+        showSelected.style.fontWeight = '400';
+        showByDate.style.color = '#222';
+        showByDate.style.fontWeight = '600';
+        showByTopic.style.color = '#7a9c3a';
+        showByTopic.style.fontWeight = '400';
         sortByDate();
       });
-    </script>
-  </body>
+
+      showByTopic.addEventListener('click', () => {
+        showSelected.style.color = '#7a9c3a';
+        showSelected.style.fontWeight = '400';
+        showByDate.style.color = '#7a9c3a';
+        showByDate.style.fontWeight = '400';
+        showByTopic.style.color = '#222';
+        showByTopic.style.fontWeight = '600';
+        sortByTopic();
+      });
+
+      function filterPublications() {
+        publications.forEach(pub => {
+          const pubTopics = pub.dataset.topics.split(' ');
+          const shouldShow = activeTopics.size === 0 ||
+            pubTopics.some(topic => activeTopics.has(topic));
+          pub.style.display = shouldShow ? 'flex' : 'none';
+        });
+      }
+
+      function sortByDate() {
+        const container = document.getElementById('publications-container');
+        const pubs = Array.from(publications);
+        pubs.sort((a, b) => b.dataset.date - a.dataset.date);
+        pubs.forEach(pub => container.appendChild(pub));
+      }
+
+      function sortByTopic() {
+        const container = document.getElementById('publications-container');
+        const pubs = Array.from(publications);
+        pubs.sort((a, b) => {
+          const topicsA = a.dataset.topics.split(' ')[0];
+          const topicsB = b.dataset.topics.split(' ')[0];
+          return topicsA.localeCompare(topicsB);
+        });
+        pubs.forEach(pub => container.appendChild(pub));
+      }
+
+      // Initialize with selected view
+      sortByDate();
+    });
+  </script>
+</body>
+
 </html>
